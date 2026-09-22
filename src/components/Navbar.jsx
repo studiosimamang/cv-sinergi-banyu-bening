@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
+// Import file logo secara langsung agar Vite menyesuaikan path relatifnya secara otomatis
+import logoImg from '../assets/logo.png';
 
 const Navbar = ({ activePage, setActivePage }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,14 +25,14 @@ const Navbar = ({ activePage, setActivePage }) => {
       <div className="w-full px-6 sm:px-10">
         <div className="flex justify-between items-center h-20">
           
-          {/* Logo Gambar Murni & Nama CV Mepet Kiri (Animasi Hover) */}
+          {/* Logo Gambar Murni & Nama CV */}
           <div 
             onClick={() => handleNavClick('home')}
             className="flex items-center gap-3 cursor-pointer group"
           >
             <div className="w-11 h-11 rounded-full bg-brand-bg-light border border-gray-200 flex items-center justify-center overflow-hidden p-1 shadow-sm shrink-0 group-hover:border-brand-blue/50 transition-all duration-300">
               <img 
-                src="/logo.png" 
+                src={logoImg} 
                 alt="Logo CV Sinergi Banyu Bening" 
                 className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
               />
@@ -40,7 +42,7 @@ const Navbar = ({ activePage, setActivePage }) => {
             </span>
           </div>
 
-          {/* Navigasi Desktop dengan Interaksi & Underline Animation */}
+          {/* Navigasi Desktop */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <button
@@ -54,7 +56,6 @@ const Navbar = ({ activePage, setActivePage }) => {
               >
                 {link.name}
                 
-                {/* Garis indikator aktif & hover animation */}
                 <span 
                   className={`absolute bottom-0 left-0 h-0.5 bg-brand-amber rounded-full transition-all duration-300 ${
                     activePage === link.id 
@@ -87,7 +88,7 @@ const Navbar = ({ activePage, setActivePage }) => {
         </div>
       </div>
 
-      {/* Menu Mobile dengan Smooth Dropdown Transition */}
+      {/* Menu Mobile */}
       {isOpen && (
         <div className="md:hidden bg-white/98 backdrop-blur-lg border-b border-gray-100 px-6 pt-2 pb-5 space-y-2 animate-in slide-in-from-top-4 fade-in duration-300 shadow-lg">
           {navLinks.map((link) => (
